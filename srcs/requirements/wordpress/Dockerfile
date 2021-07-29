@@ -9,7 +9,7 @@ RUN apt install php-fpm php-mysql -y
 
 #RUN apt install -y php-fpm php-gd php-mysql php-cli php-common php-curl php-opcache php-json php-imap php-mbstring php-xml
 
-WORKDIR /var/www
+WORKDIR /var/www/html
 RUN curl -LO https://wordpress.org/latest.tar.gz
 RUN tar xzvf latest.tar.gz
 #RUN cp -R wordpress/ /var/www/

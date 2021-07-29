@@ -19,7 +19,6 @@ services:
         depends_on: 
             - wordpress
         restart: always
-
         networks:
          - inception_network
 
