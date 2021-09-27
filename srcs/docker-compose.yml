@@ -21,7 +21,8 @@ services:
         restart: always
         networks:
          - inception_network
-
+        volumes: 
+            - ./wp-volume:/var/www/html
     wordpress:
         container_name: wordpress
         build: ./requirements/wordpress
@@ -33,6 +34,10 @@ services:
          - "9000"
         networks: 
          - inception_network
-         
+        volumes: 
+            - ./wp-volume:/var/www/html
+     
 networks:
     inception_network:
+volumes:
+    wp-volume:
