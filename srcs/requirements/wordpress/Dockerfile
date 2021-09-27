@@ -16,10 +16,14 @@ RUN tar xzvf latest.tar.gz
 RUN rm latest.tar.gz
 
 EXPOSE 9000
-
+COPY www.conf /etc/php/7.3/fpm/pool.d
+COPY ./serv.sh /tmp/
 #CMD ["php7.3-fpm",-]
 #CMD service php-fpm start
 #CMD ["service","php7.3-fpm", "start", "--nodaemonize"]
-CMD tail -f /dev/null
+
+# CMD tail -f /dev/null
+
+CMD ["sh", "/tmp/serv.sh"]
 
 #CMD service php7.3-fpm start

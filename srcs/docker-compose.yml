@@ -29,6 +29,8 @@ services:
         depends_on: 
             - mariadb
         restart: always
+        ports:
+         - "9000"
         networks: 
          - inception_network
          
