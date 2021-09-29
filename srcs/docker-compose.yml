@@ -9,6 +9,8 @@ services:
         restart: always
         networks: 
          - inception_network
+        ports:
+         - "3306"
     nginx:
         container_name: nginx
         build: ./requirements/nginx
