@@ -1,45 +1,8 @@
-version: '3'
-
+version: "3"
 services:
-
-    mariadb:
-        container_name: mariadb
-        build: ./requirements/mariadb
-        image: mariadb
-        restart: always
-        networks: 
-         - inception_network
-        ports:
-         - "3306"
     nginx:
-        container_name: nginx
         build: ./requirements/nginx
         image: nginx
-        ports: 
-         - "443:443"
-         - "80:80"
-        depends_on: 
-            - wordpress
-        restart: always
-        networks:
-         - inception_network
-        volumes: 
-            - ./wp-volume:/var/www/html
-    wordpress:
-        container_name: wordpress
-        build: ./requirements/wordpress
-        image: wordpress
-        depends_on: 
-            - mariadb
-        restart: always
+        container_name: nginx
         ports:
-         - "9000"
-        networks: 
-         - inception_network
-        volumes: 
-            - ./wp-volume:/var/www/html
-     
-networks:
-    inception_network:
-volumes:
-    wp-volume:
+            - 443:443
