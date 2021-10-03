@@ -12,6 +12,6 @@ FROM debian:buster
     COPY conf/ssl.crt /etc/ssl/
     COPY conf/ssl.key /etc/ssl/
 # nginx conf file
-    COPY conf/nginx.conf /etc/nginx/nginx.conf
+    COPY conf/default /etc/nginx/sites-available/default
 
 CMD ["nginx", "-g","daemon off;"]
