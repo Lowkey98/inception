@@ -1,14 +1,17 @@
 FROM debian:buster
 # update packages
-RUN apt-get update
-#RUN apt-get upgrade
+    RUN apt-get update -y
+
 # tools
-RUN apt-get install -y vim
+    RUN apt-get install -y vim
+
 # install nginx
-RUN apt-get install -y nginx
+    RUN apt-get install -y nginx
+
 # SSL key
-COPY conf/ssl.crt /etc/ssl/
-COPY conf/ssl.key /etc/ssl/
+    COPY conf/ssl.crt /etc/ssl/
+    COPY conf/ssl.key /etc/ssl/
 # nginx conf file
-COPY conf/nginx.conf /etc/nginx/nginx.conf
+    COPY conf/nginx.conf /etc/nginx/nginx.conf
+
 CMD ["nginx", "-g","daemon off;"]
