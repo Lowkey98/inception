@@ -10,7 +10,8 @@ services:
             inception:
         depends_on:
             - wordpress
-
+        volumes:
+            - wp-volume:/var/www/html
     
     wordpress:
         build: ./requirements/wordpress
@@ -20,5 +21,10 @@ services:
             - 9000:9000
         networks:
             inception:
+        volumes:
+            - wp-volume:/var/www/html
+                
+volumes:
+    wp-volume:                
 networks:
     inception:
