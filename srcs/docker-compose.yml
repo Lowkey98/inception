@@ -23,7 +23,17 @@ services:
             inception:
         volumes:
             - wp-volume:/var/www/html
-                
+        depends_on:
+            - mariadb
+    mariadb:
+        build: ./requirements/mariadb
+        image: mariadb
+        container_name: mariadb
+        ports:
+            - 3306:3306
+        networks:
+            inception:
+        
 volumes:
     wp-volume:                
 networks:
