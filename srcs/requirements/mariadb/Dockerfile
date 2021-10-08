@@ -4,4 +4,7 @@ RUN apt-get update -y
 
 RUN apt-get install mariadb-server -y
 
-CMD ["mysqld_safe"]
+COPY conf/my.cnf  /etc/mysql
+
+COPY tools/setup.sh setup.sh
+CMD ["sh", "setup.sh"]

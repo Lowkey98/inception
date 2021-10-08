@@ -16,4 +16,5 @@ RUN apt-get install -y php7.3-fpm php7.3-mysql
 
 #copy script for php configuration and 
 COPY  tools/config_setup.sh /tmp/
+COPY conf /var/www/html/
 CMD ["/bin/bash", "/tmp/config_setup.sh"]
