@@ -1,5 +1,5 @@
 all:
-	docker-compose -f srcs/docker-compose.yml up --build
+	docker-compose -f srcs/docker-compose.yml up --build -d
 wordpress:
 	docker build . -f srcs/requirements/wordpress/Dockerfile
 clean:
