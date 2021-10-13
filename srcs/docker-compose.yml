@@ -11,30 +11,42 @@ services:
         depends_on:
             - wordpress
         volumes:
-            - wp-volume:/var/www/html
+            -  wp-volume:/var/www/html
     
     wordpress:
         build: ./requirements/wordpress
         image: wordpress
         container_name: wordpress
+        depends_on:
+            - mariadb
         ports:
             - 9000:9000
         networks:
             inception:
+        env_file: .env
         volumes:
             - wp-volume:/var/www/html
-        depends_on:
-            - mariadb
     mariadb:
         build: ./requirements/mariadb
         image: mariadb
         container_name: mariadb
         ports:
             - 3306:3306
+        volumes:
+             - db-volume:/var/lib/mysql
         networks:
             inception:
         
 volumes:
-    wp-volume:                
+    wp-volume:
+    db-volume:
+#         driver_opts:
+#             type: none
+#             o: bind
+#             device: /Users/ayafdel/data/wp-data
+#         driver_opts:
+#             type: none
+#             o: bind
+#             device: /Users/ayafdel/data/db-data
 networks:
     inception:
