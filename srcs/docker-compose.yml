@@ -12,6 +12,7 @@ services:
             - wordpress
         volumes:
             -  wp-volume:/var/www/html
+        restart: always
     
     wordpress:
         build: ./requirements/wordpress
@@ -26,6 +27,7 @@ services:
         env_file: .env
         volumes:
             - wp-volume:/var/www/html
+        restart: always
     mariadb:
         build: ./requirements/mariadb
         image: mariadb
@@ -35,18 +37,21 @@ services:
         env_file: .env        
         volumes:
              - db-volume:/var/lib/mysql
+        restart: always
         networks:
             inception:
 volumes:
-    wp-volume:
     db-volume:
-#         driver_opts:
-#             type: none
-#             o: bind
-#             device: /Users/ayafdel/data/wp-data
-#         driver_opts:
-#             type: none
-#             o: bind
-#             device: /Users/ayafdel/data/db-data
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: /home/ayafdel/data/db-data
+    wp-volume:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: /home/ayafdel/data/wp-data
 networks:
     inception:
